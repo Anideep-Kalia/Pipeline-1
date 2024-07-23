@@ -1,0 +1,46 @@
+Jenkins:
+> It is an open-source automation server that facilitates continuous integration and continuous delivery (CI/CD) in software development. process : building, testing, and deploying applications, allowing developers to focus on writing code
+> It supports defining CI/CD pipelines as code using its Pipeline DSL (Domain Specific Language), which makes it easy to version control and maintain the pipelines.
+> Has capabilities, allowing integration with various tools and platforms like Git, Maven, Docker, Kubernetes, and many others.
+--------------------------------------------------------------------------------------------------------------------
+
+Steps to CI:
+-> Webhook is used to trigger the Jenkins whenever GitHub repo is changed
+-> Pipeline used is declarative one and not scripting as it is beginner friendly and multiple task can be done simulataneously
+-> Agent we are using is Docker Agent instead of Maven as it is lightweight, non-prerequesite
+-> Maven will build the project
+-> SonarQube is used to send notification and to send test reports of quality, security and basic practices suggestions
+-> Image then saved to dockerhub and at the end you will have image ready and in some public image registry e.g. dockerhub, query.io, ECR
+
+-> Now CD is communicated with CI previous & non-scalable methods : ansible, shell scripts {try to merge into one} but now we have continuous delivery programs like Gitops
+
+Steps to CI:
+-> As soon as new image in conatianer registry is updated Argo/GitActions which is monitoring the registry will implement the changes in another GitHub repo(this is purely for Image manifest like helm chart,pods etc..) and then another controller i.e. Argo CD in Kubernetes will deploy the repo(image manifest...)
+THIS SAME SHIT IS IN README
+--------------------------------------------------------------------------------------------------------------------
+
+INTERVIEW
+-> CI/CD differs from programming language to p.l. and each p.l. has different tools for implementation
+--------------------------------------------------------------------------------------------------------------------
+
+More about Jenkins
+
+-> we previously uses master slave Jenkins on different machine so there is no conflicts in packages like java v6 and other using java v7 stuff like that
+-> but that was very costly as the machines were running even if there is no work getting done
+-> So then we uses docker plugin to get different containers on same machine and this container will automatically delete after work
+
+-> So in 2-3 tier application like full stack with database we will make tier numbered steps in which we each task will be assigned to each tier and no worker is needed in this too. See the multi-stage-multi-agent repo for example
+
+SHARED LIBRARIES
+-> shared libraries in Jenkins usually is saved in vars and take care of syntax in which file name is saved
+-> Manage Jenkins > configure system > Global pipeline Libraries > Name: your_choice; Project Repo: project URL as it will simply take up the vars folder only
+-> Now write @Library("{name_of_your_library_saved_above}") _
+-> steps{
+{name_of_file}()     // careful not function name
+}
+ 
+
+so only one file contains one function
+
+ 
+

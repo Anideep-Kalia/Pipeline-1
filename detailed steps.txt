@@ -1,0 +1,44 @@
+JAVA JENKINS PROJECT
+CI:
+-> made a EC2 medium instance
+-> then follow Install_Jenkins.md upto Docker pipeline plugin
+-> then make pipeline in New Item
+-> Pipeline: pipeline script from SCM -> Git vica versa
+-> Q: jenkin file can be anywhere and can be of any name
+-> Q: Java application and can run other programs too by
+. installing Plugins git and nodejs(e.g.)
+. Manage Jenkins > Global Tool Config. > add NodeJS under NodeJS section
+. now create new Pipeline and configure it and run it 
+-> We are docker as agent for running our jenkin pipeline because of efficiency and more work on single shit 
+-> download docker pipeline plugin and SonarQube Scanner
+-> install SonarQube steps in Readme
+-> Go to account > Security > generate Token (e.g. jenkins)
+-> go jenkin manage cred. > system > global cred. > add new cred 
+. SonarQube
+. secret : token
+. ID (anything) 
+-> Install Docker form Install_Jenkins
+-> restart Jenkins @{ec2_ip}:8080/restart
+-> we don't need to put actual credentials in the Jenkins file we can use .env variables for that which we can make again in cred. > system > global cred. > add new cred under username and password section
+. for docker-cred => id: docker-cred username and password will be of dockerhub
+. for gihub: Secret text(as GitHub has access token and access key) same id and secrete from (developer setting-> access token classic -> make )
+CD part:
+-> enter minikube on local machine
+-> install ArgoCD from operatorhub.io (steps would be on ArgoCD folder)
+-> kubectl get svc  -n argocd => kubectl edit svc {name_of_argocd_service}  -n argocd
+. change type to NodePort from ClusterIP
+-> minikube service argodc-server -n argocd
+-> minikube service list
+-> On url: admin:admin and password
+. kubectl get secret -n argocd
+. kubectl edit secret {something_argocd-cluster} -n argocd
+. copy admin.password
+. echo {password} | base64 -d
+. copy the actual password without % 
+-> and login
+-> new project
+. Sync policy: Automatic
+. url: GitHub repo
+. path: manifest{folder_not_file}
+. namespace: default
+. cluster URL: same given

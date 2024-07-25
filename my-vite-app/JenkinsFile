@@ -19,17 +19,6 @@ pipeline {
                 }
             }
         }
-        // Uncomment this stage if you have SonarQube setup
-        // stage('Static Code Analysis') {
-        //     environment {
-        //         SONAR_URL = "http://34.201.116.83:9000"
-        //     }
-        //     steps {
-        //         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-        //             sh 'sonar-scanner -Dsonar.projectKey=my-react-app -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_AUTH_TOKEN'
-        //         }
-        //     }
-        // }
         stage('Build and Push Docker Image') {
             environment {
                 DOCKER_IMAGE = "anideepkalia/react-app:${BUILD_NUMBER}"
@@ -67,7 +56,7 @@ pipeline {
     }
     post {
         always {
-            cleanWs() // Clean workspace after build
+            cleanWs() // Ensure this step is within a valid context
         }
         success {
             echo 'Pipeline completed successfully!'

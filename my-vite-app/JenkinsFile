@@ -56,15 +56,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            cleanWs() // Ensure this step is within a valid context
-        }
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
 }

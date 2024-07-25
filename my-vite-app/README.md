@@ -8,36 +8,39 @@ Checkout the repo and move to the directory
 git clone https://github.com/Anideep-Kalia/Pipeline-1.git
 cd Pipeline-1/my-vite-app
 ```
-
-Run npm install 
+Instal necessary modules to run application
 
 ```
+Run npm install 
+```
 
-The above maven target stroes the artifacts to the `target` directory. You can either execute the artifact on your local machine
+
+For building project
+```
+npm run build
+```
+For running the application on local machine at `localhost:5173`
+```
+npm run dev
+```
 (or) run it as a Docker container.
 
-** Note: To avoid issues with local setup, Java versions and other dependencies, I would recommend the docker way. **
+** Note: To avoid issues with local setup, Node versions and other dependencies, I would recommend the docker way. **
 
-
-### Execute locally (Java 11 needed) and access the application on http://localhost:8080
-
-```
-java -jar target/spring-boot-web.jar
-```
 
 ### The Docker way
 
 Build the Docker Image
 
 ```
-docker build -t ultimate-cicd-pipeline:v1 .
+docker build -t pipeline-1:v1 .
 ```
 
 ```
-docker run -d -p 8010:8080 -t ultimate-cicd-pipeline:v1
+docker run -d -p 5173:5173 -t pipeline-1:v1
 ```
 
-Hurray !! Access the application on `http://<ip-address>:8010`
+Hurray !! Access the application on `http://<ip-address>:5173`
 
 
 ## Next Steps

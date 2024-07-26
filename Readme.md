@@ -20,6 +20,7 @@ Steps:
        1.3 NodeJS plugin
        1.4 Pipeline plugin
        1.5 Kubernetes Continuous Deploy plugin
+       1.6 Plugins name keeps on changing so try to lookout for logic instead name
 
     2. Create a new Jenkins pipeline:
        2.1 In Jenkins, create a new pipeline job and configure it with the Git repository URL for the React application.

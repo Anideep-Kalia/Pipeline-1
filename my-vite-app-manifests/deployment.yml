@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: vite-react-app
-        image: anideepkalia/react-app:replaceImageTag
+        image: anideepkalia/react-app:replaceImageTag   # replace replaceImageTag with actual one
         ports:
         - containerPort: 8080

@@ -1,0 +1,3 @@
+-> https://www.jenkins.io/doc/tutorials/build-a-node-js-and-react-app-with-npm/
+-> https://www.geeksforgeeks.org/how-to-integrate-sonarqube-with-jenkins/
+-> https://stackoverflow.com/questions/62876686/how-to-setup-sonarqube-scanner-in-jenkins-for-a-js-ts-react-project
